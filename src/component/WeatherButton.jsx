@@ -3,7 +3,7 @@ import { PaperAirplaneIcon } from "@heroicons/react/24/outline";
 
 const WeatherButton = ({ cities, city, setCity }) => {
   return (
-    <div className="fixed bottom-0 px-4 py-4 w-full bg-gradient-to-r from-[#6a11cb] to-[#2575fc] overflow-x-auto scrollbar-hide border-t-1 border-white/25">
+    <div className="flex justify-start md:justify-center fixed bottom-0 px-4 py-4 w-full bg-gradient-to-r from-[#6a11cb] to-[#2575fc] overflow-x-auto scrollbar-hide border-t-1 border-white/25">
       <div className="flex gap-3 snap-x snap-mandatory w-max scroll-smooth">
         <button
           className={`snap-center flex justify-center items-center gap-2 px-5 py-2.5 rounded-full backdrop-blur-md border transition-all whitespace-nowrap text-lg cursor-pointer  ${
