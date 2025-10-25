@@ -9,11 +9,6 @@ const WeatherDetailBox = ({ weather, unit }) => {
     return localTime.toUTCString().slice(17, 22);
   };
 
-  // const celsius = weather?.main.temp; // number
-  // const CELSIUS = `${celsius?.toFixed(1)}°`; // string
-  // const fahrenheit = `${(celsius * 1.8 + 32).toFixed(1)}`; // string
-  // const FAHRENHEIT = `${fahrenheit}°`; // string
-
   return (
     <div className="grid grid-cols-2 gap-4">
       <WeatherDetailBoxItem
