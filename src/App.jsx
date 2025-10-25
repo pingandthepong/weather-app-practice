@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import WeatherBox from "./component/WeatherBox";
 import WeatherButton from "./component/WeatherButton";
-import { ClipLoader } from "react-spinners";
+import { SyncLoader } from "react-spinners";
 
 // DONE 1. 앱이 실행되자마자 현재 위치 기반의 날씨가 보인다. (지역, 섭씨, 화씨, 날씨상태)
 // DONE 2. 하단에는 5개의 도시버튼이 있다. (현재위치, 다른 도시들)
@@ -54,13 +54,14 @@ function App() {
   };
 
   return (
-    <>
+    <div className="text-white text-center overflow-x-hidden bg-gradient-to-r from-[#6a11cb] to-[#2575fc] py-24">
       {loading ? (
         <div className="container">
-          <ClipLoader
-            color="red"
+          <SyncLoader
+            color="#fff"
             loading={loading}
-            size={40}
+            size={20}
+            margin={4}
             aria-label="Loading Spinner"
           />
         </div>
@@ -70,7 +71,7 @@ function App() {
           <WeatherButton cities={cities} city={city} setCity={setCity} />
         </div>
       )}
-    </>
+    </div>
   );
 }
 

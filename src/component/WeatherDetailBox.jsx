@@ -1,8 +1,6 @@
 import React from "react";
 
 const WeatherDetailBox = ({ weather }) => {
-  console.log(weather?.timezone);
-
   const getFullTime = (unixTime, timezoneOffset) => {
     if (!unixTime || timezoneOffset === undefined) return "";
 
