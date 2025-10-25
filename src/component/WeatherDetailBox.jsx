@@ -1,6 +1,15 @@
 import React from "react";
 
 const WeatherDetailBox = ({ weather }) => {
+  console.log(weather?.timezone);
+
+  const getFullTime = (unixTime, timezoneOffset) => {
+    if (!unixTime || timezoneOffset === undefined) return "";
+
+    const localTime = new Date((unixTime + timezoneOffset) * 1000);
+
+    return localTime.toUTCString().slice(17, 22);
+  };
   return (
     <div className="weather-detail-box-wrap">
       <div className="weather-detail-box">
@@ -13,11 +22,11 @@ const WeatherDetailBox = ({ weather }) => {
       </div>
       <div className="weather-detail-box">
         <h2>일출</h2>
-        <p>{weather?.sys.sunrise}</p>
+        <p>{getFullTime(weather?.sys.sunrise, weather?.timezone)}</p>
       </div>
       <div className="weather-detail-box">
         <h2>일몰</h2>
-        <p>{weather?.sys.sunset}</p>
+        <p>{getFullTime(weather?.sys.sunset, weather?.timezone)}</p>
       </div>
       <div className="weather-detail-box">
         <h2>바람</h2>
