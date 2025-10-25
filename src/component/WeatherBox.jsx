@@ -25,9 +25,9 @@ const weatherImages = {
 
 const WeatherBox = ({ weather }) => {
   const celsius = weather?.main.temp; // number
-  const CELSIUS = `${celsius?.toFixed(1)}°C`; // string
+  const CELSIUS = `${celsius?.toFixed(1)}°`; // string
   const fahrenheit = `${(celsius * 1.8 + 32).toFixed(1)}`; // string
-  const FAHRENHEIT = `${fahrenheit}°F`; // string
+  const FAHRENHEIT = `${fahrenheit}°`; // string
 
   return (
     <div className="weather-box">

@@ -54,7 +54,7 @@ function App() {
   };
 
   return (
-    <div className="text-white text-center overflow-x-hidden bg-gradient-to-r from-[#6a11cb] to-[#2575fc] py-24">
+    <div className="min-h-screen flex justify-center align-center text-white text-center overflow-x-hidden bg-gradient-to-r from-[#6a11cb] to-[#2575fc] pt-14 pb-32">
       {loading ? (
         <div className="container">
           <SyncLoader
