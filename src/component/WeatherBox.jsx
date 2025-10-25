@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import WeatherDetailBox from "./WeatherDetailBox";
 import { MapPinIcon } from "@heroicons/react/24/outline";
 import Thunderstorm from "../assets/Thunderstorm.svg";
@@ -28,6 +28,7 @@ const WeatherBox = ({ weather }) => {
   const CELSIUS = `${celsius?.toFixed(1)}°`; // string
   const fahrenheit = `${(celsius * 1.8 + 32).toFixed(1)}`; // string
   const FAHRENHEIT = `${fahrenheit}°`; // string
+  const [unit, setUnit] = useState("C"); // "C" or "F"
 
   return (
     <div className="weather-box">
@@ -44,12 +45,17 @@ const WeatherBox = ({ weather }) => {
         />
       </div>
 
-      <TempToggle weather={weather} cel={CELSIUS} fah={FAHRENHEIT} />
+      <TempToggle
+        unit={unit}
+        setUnit={setUnit}
+        cel={CELSIUS}
+        fah={FAHRENHEIT}
+      />
 
       <p className="capitalize font-extralight tracking-wide mt-3 mb-6">
         {weather?.weather[0].description}
       </p>
-      <WeatherDetailBox weather={weather} />
+      <WeatherDetailBox weather={weather} unit={unit} />
     </div>
   );
 };

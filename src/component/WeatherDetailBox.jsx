@@ -2,13 +2,13 @@ import React from "react";
 import WeatherDetailBoxItem from "./WeatherDetailBoxItem";
 
 const WeatherDetailBox = ({ weather }) => {
+  // Sunrise, Sunset 시간으로 변경
   const getFullTime = (unixTime, timezoneOffset) => {
     if (!unixTime || timezoneOffset === undefined) return "";
-
     const localTime = new Date((unixTime + timezoneOffset) * 1000);
-
     return localTime.toUTCString().slice(17, 22);
   };
+
   return (
     <div className="grid grid-cols-2 gap-4">
       <WeatherDetailBoxItem
