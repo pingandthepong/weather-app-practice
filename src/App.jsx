@@ -28,11 +28,23 @@ function App() {
 
   // 현재 위치 가져오기
   const getCurrentLocation = () => {
-    navigator.geolocation.getCurrentPosition((pos) => {
-      let lat = pos.coords.latitude;
-      let lon = pos.coords.longitude;
-      getWeatherByCurrentLocation(lat, lon);
-    });
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          let lat = pos.coords.latitude;
+          let lon = pos.coords.longitude;
+          getWeatherByCurrentLocation(lat, lon);
+        },
+        (error) => {
+          console.error("위치 접근 거부 또는 오류 발생:", error);
+          // 위치 접근 거부 시 기본 도시 날씨 표시
+          setCity("Seoul");
+        }
+      );
+    } else {
+      console.error("이 브라우저에서는 위치 정보가 지원되지 않습니다.");
+      setCity("Seoul");
+    }
   };
   // 날씨 API data
   const getWeatherByCurrentLocation = async (lat, lon) => {
