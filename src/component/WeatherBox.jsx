@@ -24,11 +24,19 @@ const weatherImages = {
 };
 
 const WeatherBox = ({ weather }) => {
+  if (!weather || !weather.main || !weather.weather) {
+    return <p className="text-white/70">날씨 데이터를 불러오는 중...</p>;
+  }
+
   const celsius = weather?.main.temp; // number
   const CELSIUS = `${celsius?.toFixed(1)}°`; // string
   const fahrenheit = `${(celsius * 1.8 + 32).toFixed(1)}`; // string
   const FAHRENHEIT = `${fahrenheit}°`; // string
   const [unit, setUnit] = useState("C"); // "C" or "F"
+
+  // 이미지 fallback 처리
+  const weatherKey = weather.weather[0].main;
+  const weatherImage = weatherImages[weatherKey] || weatherImage["Clear"];
 
   return (
     <div className="weather-box">
@@ -39,7 +47,7 @@ const WeatherBox = ({ weather }) => {
         </h1>
         <CurrentDate />
         <img
-          src={weatherImages[weather?.weather[0].main]}
+          src={weatherImage}
           alt={`${weather?.weather[0].description} icon`}
           className="w-80 m-4"
         />
